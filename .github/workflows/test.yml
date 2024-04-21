@@ -32,4 +32,4 @@ jobs:
       run: pnpm i
 
     - name: Run tests
-      run: pnpm run test
+      run: pnpm prisma generate && pnpm run test
