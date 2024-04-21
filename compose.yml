@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: bitnami/postgresql
+    container_name: gympass_database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=gympassDB
+    volumes:
+      - gympass_database_data:/usr/src/data
+
+volumes:
+  gympass_database_data:
