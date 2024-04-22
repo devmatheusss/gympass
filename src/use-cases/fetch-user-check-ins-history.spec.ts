@@ -2,11 +2,12 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { FetchUserCheckInsHistoryUseCase } from './fetch-user-check-ins-history'
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/in-memory-check-ins.repository'
+import { InvalidPageError } from './errors/invalid-page.error'
 
 let checkInsRepository: InMemoryCheckInsRepository
 let sut: FetchUserCheckInsHistoryUseCase
 
-describe('Fetch User CheckIns History Use Case', () => {
+describe('Fetch User Check-ins History Use Case', () => {
   beforeEach(() => {
     checkInsRepository = new InMemoryCheckInsRepository()
     sut = new FetchUserCheckInsHistoryUseCase(checkInsRepository)
@@ -64,6 +65,6 @@ describe('Fetch User CheckIns History Use Case', () => {
         userId: 'user-01',
         page: 0,
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(InvalidPageError)
   })
 })

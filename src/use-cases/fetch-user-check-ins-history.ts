@@ -1,5 +1,6 @@
-import { CheckInsRepository } from '@/repositories/check-ins-repository'
 import { CheckIn } from '@prisma/client'
+import { CheckInsRepository } from '@/repositories/check-ins-repository'
+import { InvalidPageError } from './errors/invalid-page.error'
 
 interface FetchUserCheckInsHistoryUseCaseRequest {
   userId: string
@@ -18,7 +19,7 @@ export class FetchUserCheckInsHistoryUseCase {
     page = 1,
   }: FetchUserCheckInsHistoryUseCaseRequest): Promise<FetchUserCheckInsHistoryUseCaseResponse> {
     if (page <= 0) {
-      throw new Error()
+      throw new InvalidPageError()
     }
 
     const checkIns = await this.checkInsRepository.findManyByUserId(
