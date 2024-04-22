@@ -79,7 +79,7 @@ describe('Check-in Use Case', () => {
       userLongitude: -63.580611,
     })
 
-    expect(checkIn.id).not.toBe('undefined')
+    expect(checkIn.id).toEqual(expect.any(String))
   })
 
   it('should not be able to check in on distant gym', async () => {

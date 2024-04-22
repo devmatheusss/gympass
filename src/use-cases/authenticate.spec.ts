@@ -26,7 +26,7 @@ describe('Authenticate User Use Case', () => {
       password: '123456',
     })
 
-    expect(user.id).not.toBe('undefined')
+    expect(user.id).toEqual(expect.any(String))
   })
 
   it('should not be able to authenticate with wrong email', async () => {

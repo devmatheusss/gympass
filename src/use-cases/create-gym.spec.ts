@@ -21,6 +21,6 @@ describe('Create Gym Use Case', () => {
       longitude: -63.580611,
     })
 
-    expect(gym.id).not.toBe('undefined')
+    expect(gym.id).toEqual(expect.any(String))
   })
 })
